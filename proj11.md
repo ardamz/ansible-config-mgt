@@ -41,6 +41,32 @@ git clone https://github.com/ardamz/ansible-config-mgt.git
 
 ![Screenshot](https://github.com/ardamz/my-demo/blob/main/project11/GitClone.png)
 
+## STEP 3.  **Begin Ansible Developement**
+
+1. I created a new branch called `prj-11` in my `ansible-config-mgt` repository.
+
+```bash
+# Checkout and create a branch called prj-11
+git checkout -b prj-11
+
+# Create both playbooks and inventory directories
+mkdir playboks && mkdir inventory
+
+# Create common.yml in playbooks directory
+cd playboks && touch common.yml
+
+```
+
+![Screenshot](https://github.com/ardamz/my-demo/blob/main/project11/Branch.png)
+
+2. I created `playbooks` (used to store all your playbook files) and `inventotory` (used to keep your hosts organised) directories.
+
+![Screenshot](https://github.com/ardamz/my-demo/blob/main/project11/Directory.png)
+
+3. Created a `common.yml` file in the `playbooks` directory.
+
+![Screenshot](https://github.com/ardamz/my-demo/blob/main/project11/Common.png)
+
 
 
 
