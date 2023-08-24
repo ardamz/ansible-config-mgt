@@ -9,6 +9,10 @@
       yum:
         name: wireshark
         state: latest
+    - name: ensure net-tools is at the latest version
+      yum:
+        name: net-tools
+        state: latest
 
 - name: update LB server
   hosts: lb
