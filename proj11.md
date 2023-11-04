@@ -43,11 +43,11 @@ git clone https://github.com/ardamz/ansible-config-mgt.git
 
 ## STEP 3.  **Begin Ansible Developement**
 
-1. I created a new branch called `prj-11` in my `ansible-config-mgt` repository.
+1. I created a new branch called `Prj_11` in my `ansible-config-mgt` repository.
 
 ```bash
-# Checkout and create a branch called prj-11
-git checkout -b prj-11
+# Checkout and create a branch called Prj_11
+git checkout -b Prj_11
 
 # Create both playbooks and inventory directories
 mkdir playboks && mkdir inventory
@@ -66,6 +66,91 @@ cd playboks && touch common.yml
 3. Created a `common.yml` file in the `playbooks` directory.
 
 ![Screenshot](https://github.com/ardamz/my-demo/blob/main/project11/Common.png)
+
+4. Within the inventory directory,I created an inventory file (.yml) for each environment (Development, Staging, Testing and Production) dev, staging, uat, and prod respectively.
+
+![Screenshot](https://github.com/ardamz/my-demo/blob/main/project11/Inventories.png)
+
+
+## STEP 4.  **Set up an Ansible Inventory**
+For ansible to be able to login to the other servers, i needed to find a way to import the private key to the `Jenkins-Ansible` server, to solve this problem, I had to make use of an `SSH Agent.` To do this I did the following;
+
+1. I exitted my `Jenkin-Ansible` server,
+2. i ran the codes below
+
+```bash
+# Start and configure SSH Agent
+eval `ssh-agent -s`
+
+# Add Private key to the agent
+ssh-add pbls2.pem
+
+# Confirm key has been added
+ssh-add -l
+
+```
+![Screenshot](https://github.com/ardamz/my-demo/blob/main/project11/SshAdd.png)
+
+3. Access the `Jenkins-Ansible` server using ssh-agent by running
+
+```bash
+ ssh -A ubuntu@3.80.32.204
+```
+
+![Screenshot](https://github.com/ardamz/my-demo/blob/main/project11/SshAgentLogin.png)
+
+4. After setting up and verifying the ssh-agent, I updated the `inventory/dev.yml` file with the details of the various servers.
+
+
+## STEP 5.  **Create A Common Playbook**
+
+1. I populated the playbooks.common.yml with the following lines of code
+
+```bash
+---
+- name: update web, nfs and db servers
+  hosts: webservers, nfs, db
+  remote_user: ec2-user
+  become: yes
+  become_user: root
+  tasks:
+    - name: ensure wireshark is at the latest version
+      yum:
+        name: wireshark
+        state: latest
+
+- name: update LB server
+  hosts: lb
+  remote_user: ubuntu
+  become: yes
+  become_user: root
+  tasks:
+    - name: Update apt repo
+      apt: 
+        update_cache: yes
+
+    - name: ensure wireshark is at the latest version
+      apt:
+        name: wireshark
+        state: latest
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
