@@ -133,12 +133,30 @@ ssh-add -l
       apt:
         name: wireshark
         state: latest
+
+- name: create directory, file and set timezone on all servers
+  hosts: webservers, nfs, db, lb
+  become: yes
+  tasks:
+    - name: create a directory
+      file:
+        path: /home/sample
+        state: directory
+
+    - name: create a file
+      file:
+        path: /home/sample/ansible.txt
+        state: touch
+
+    - name: set timezone
+      timezone:
+        name: Africa/Lagos
 ```
 
+## STEP 6.  **Update GIT With the Latest Code**
 
 
-
-
+## STEP 7.  **Run First Ansible Test**
 
 
 
