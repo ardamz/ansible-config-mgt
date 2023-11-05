@@ -20,7 +20,7 @@ ansible --version
 
 3. In my `guthub` account, I created a new repositiry named `ansible-config-mgt`.
 
-4. I configured `Jenkins` by perfor,ming the following steps;
+4. I configured `Jenkins` by performing the following steps;
     *  I created a new Freestyle project called `ansible` in Jenkins and pointed it to my `ansible-config-mgt` repository.
     -  I configured Webhook in GitHub and set webhook to trigger `ansible` build.
     *  I configured a Post-build job to save all (**) files.
