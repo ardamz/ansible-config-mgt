@@ -20,7 +20,7 @@ ansible --version
 
 3. In my `guthub` account, I created a new repositiry named `ansible-config-mgt`.
 
-4. I configured `Jenkins` by perfor,ming the following steps;
+4. I configured `Jenkins` by performing the following steps;
     *  I created a new Freestyle project called `ansible` in Jenkins and pointed it to my `ansible-config-mgt` repository.
     -  I configured Webhook in GitHub and set webhook to trigger `ansible` build.
     *  I configured a Post-build job to save all (**) files.
@@ -133,12 +133,30 @@ ssh-add -l
       apt:
         name: wireshark
         state: latest
+
+- name: create directory, file and set timezone on all servers
+  hosts: webservers, nfs, db, lb
+  become: yes
+  tasks:
+    - name: create a directory
+      file:
+        path: /home/sample
+        state: directory
+
+    - name: create a file
+      file:
+        path: /home/sample/ansible.txt
+        state: touch
+
+    - name: set timezone
+      timezone:
+        name: Africa/Lagos
 ```
 
+## STEP 6.  **Update GIT With the Latest Code**
 
 
-
-
+## STEP 7.  **Run First Ansible Test**
 
 
 
