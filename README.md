@@ -1,2 +1,2 @@
 # ansible-config-mgt
-More & more edits.
+More and more edits.
