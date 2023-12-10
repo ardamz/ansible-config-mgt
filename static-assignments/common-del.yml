@@ -6,7 +6,7 @@
   become_user: root
   tasks:
   - name: delete wireshark
-    yum4:
+    yum:
       name: wireshark
       state: removed
 
