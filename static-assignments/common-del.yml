@@ -8,7 +8,7 @@
   - name: delete wireshark
     apt:
       name: wireshark
-      state: removed
+      state: absent
 
 - name: update LB server
   hosts: lb
