@@ -5,7 +5,7 @@
   become: yes
   become_user: root
   tasks:
-  - name: delete wireshark
+  - name: delete reshark-qt
     apt:
       name: wireshark
       state: absent
@@ -19,13 +19,7 @@
   become: yes
   become_user: root
   tasks:
-  
-  - name: delete wireshark-qt
-    yum:
-      name: wireshark-qt
-      state: absent
-      autoremove: yes
-      
+        
   - name: delete wireshark
     yum:
       name: wireshark
