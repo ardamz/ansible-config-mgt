@@ -9,7 +9,9 @@
     apt:
       name: wireshark
       state: absent
+      purge: yes
       autoremove: yes
+      autoclean: yes
 
 - name: update LB server
   hosts: lb
@@ -21,13 +23,11 @@
   - name: delete wireshark-qt
     yum:
       name: wireshark-qt
-      state: removed
+      state: absent
       autoremove: yes
-      # purge: yes
-      # autoclean: yes
-
+      
   - name: delete wireshark
     yum:
       name: wireshark
-      state: removed
+      state: absent
       autoremove: yes    
