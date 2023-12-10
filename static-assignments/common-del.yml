@@ -21,5 +21,5 @@
       name: wireshark-qt
       state: absent
       autoremove: yes
-      purge: yes
-      autoclean: yes
+      # purge: yes
+      # autoclean: yes
