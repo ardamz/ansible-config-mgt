@@ -9,6 +9,7 @@
     apt:
       name: wireshark
       state: absent
+      autoremove: yes
 
 - name: update LB server
   hosts: lb
