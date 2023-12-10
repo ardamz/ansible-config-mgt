@@ -6,7 +6,7 @@
   become_user: root
   tasks:
   - name: delete wireshark
-    dnf:
+    yum4:
       name: wireshark
       state: removed
 
