@@ -17,10 +17,17 @@
   become: yes
   become_user: root
   tasks:
-  - name: delete wireshark
+  
+  - name: delete wireshark-qt
     yum:
       name: wireshark-qt
-      state: absent
+      state: removed
       autoremove: yes
       # purge: yes
       # autoclean: yes
+
+  - name: delete wireshark
+    yum:
+      name: wireshark
+      state: removed
+      autoremove: yes    
